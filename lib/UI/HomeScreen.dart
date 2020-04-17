@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_finder/DataLayer/Movie.dart';
 import 'package:movie_finder/Widgets/Button.dart';
+import 'package:movie_finder/Widgets/Carousel.dart';
+import 'package:movie_finder/Widgets/DrawerMenu.dart';
+import 'package:movie_finder/Widgets/TextField.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,33 +16,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: appBarTitle), actions: <Widget>[
-       IconButton(
-          icon: actionIcon,
-          onPressed: () {
-            setState(() {
-              if (this.actionIcon.icon == Icons.search) {
-                this.actionIcon = Icon(Icons.close);
-                this.appBarTitle = TextField(
-                  controller: Movie.name,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search, color: Colors.white),
-                      hintText: "Search...",
-                      hintStyle: TextStyle(color: Colors.white)),
-                );
-              } else {
-                this.actionIcon = Icon(Icons.search);
-                this.appBarTitle = Text("Movie Finder");
-              }
-            });
-          },
-        ),
-      ]),
-      body: HomeScreen(),
-    );
+        appBar: AppBar(title: Center(child: appBarTitle), actions: <Widget>[
+          IconButton(
+            icon: actionIcon,
+            onPressed: () {
+              setState(() {
+                if (this.actionIcon.icon == Icons.search) {
+                  this.actionIcon = Icon(Icons.close);
+                  this.appBarTitle = TxtField();
+                } else {
+                  this.actionIcon = Icon(Icons.search);
+                  this.appBarTitle = Text("Movie Finder");
+                }
+              });
+            },
+          ),
+        ]),
+        body: HomeScreen(),
+        drawer: DrawerMenu(context));
   }
 }
 
@@ -50,7 +43,8 @@ class HomeScreen extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Buttons()
+          MyCarousel(context),
+          Buttons(),
         ],
       ),
     );
