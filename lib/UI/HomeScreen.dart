@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_finder/Widgets/Button.dart';
 import 'package:movie_finder/Widgets/Carousel.dart';
 import 'package:movie_finder/Widgets/DrawerMenu.dart';
+import 'package:movie_finder/Widgets/TabBar.dart';
 import 'package:movie_finder/Widgets/TextField.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,8 +45,51 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: <Widget>[
           MyCarousel(context),
+          // MenuBar(),
           Buttons(),
+          Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: ListView.builder(
+                    
+                  ),
+                )
+              ],
+            ),
+          )
         ],
+      ),
+    );
+  }
+}
+
+class CategoryTile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        margin: EdgeInsets.only(right: 16.0),
+        child: Stack(
+          children: <Widget>[
+            Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6.0),
+                    color: Colors.black26
+                    ),
+                height: 60.0,
+                width: 120.0,
+                child: Text(
+                  "First One",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.0),
+                )),
+          ],
+        ),
       ),
     );
   }
