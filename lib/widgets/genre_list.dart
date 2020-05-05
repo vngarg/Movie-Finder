@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_finder/models/genre.dart';
 import 'package:movie_finder/style/theme.dart' as Style;
+import 'package:movie_finder/widgets/genre_movies.dart';
 
 class GenreList extends StatefulWidget {
 
@@ -67,7 +68,10 @@ class _GenreListState extends State<GenreList> with SingleTickerProviderStateMix
           body: TabBarView(
             controller: _tabController,
             physics: NeverScrollableScrollPhysics(),
-            children: null,
+            children: genres.map((Genre genre) {
+              // return Text("${genre.name} ${genre.id}" , style: TextStyle(color: Colors.white),);
+              return GenreMovies(genreId: genre.id);
+            }).toList(),
           ),
         ),
       ),

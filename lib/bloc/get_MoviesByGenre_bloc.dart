@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movie_finder/models/genre_response.dart';
 import 'package:movie_finder/models/movie_response.dart';
 import 'package:movie_finder/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';

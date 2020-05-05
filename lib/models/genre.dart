@@ -1,5 +1,6 @@
 class Genre {
-  final String id , name;
+  final String name;
+  final int id;
 
   Genre( this.name , this.id);
 
