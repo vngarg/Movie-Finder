@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_finder/bloc/get_MoviesByGenre_bloc.dart';
 import 'package:movie_finder/models/genre.dart';
 import 'package:movie_finder/style/theme.dart' as Style;
 import 'package:movie_finder/widgets/genre_movies.dart';
@@ -25,6 +26,11 @@ class _GenreListState extends State<GenreList> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this , length: genres.length);
+    _tabController.addListener(() {
+      if(_tabController.indexIsChanging) {
+        movieByGenreBloc..drainStream();
+      }
+    });
   }
 
   @override
@@ -69,7 +75,6 @@ class _GenreListState extends State<GenreList> with SingleTickerProviderStateMix
             controller: _tabController,
             physics: NeverScrollableScrollPhysics(),
             children: genres.map((Genre genre) {
-              // return Text("${genre.name} ${genre.id}" , style: TextStyle(color: Colors.white),);
               return GenreMovies(genreId: genre.id);
             }).toList(),
           ),

@@ -9,7 +9,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="movie_finder"
         android:icon="@mipmap/ic_launcher">
-        <uses-permission android:name="android.permission.INTERNET"/>
+        <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

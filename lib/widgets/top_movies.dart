@@ -1,49 +1,59 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movie_finder/bloc/get_MoviesByGenre_bloc.dart';
+import 'package:movie_finder/bloc/get_movies_bloc.dart';
 import 'package:movie_finder/models/movie.dart';
 import 'package:movie_finder/models/movie_response.dart';
 import 'package:movie_finder/style/theme.dart' as Style;
 
-class GenreMovies extends StatefulWidget {
-
-  final int genreId;
-  GenreMovies({
-    Key key , @required this .genreId
-  }) : super(key: key);
-
+class TopMovies extends StatefulWidget {
   @override
-  _GenreMoviesState createState() => _GenreMoviesState(genreId);
+  _TopMoviesState createState() => _TopMoviesState();
 }
 
-class _GenreMoviesState extends State<GenreMovies> {
-
-  final int genreId;
-  _GenreMoviesState(this .genreId);
+class _TopMoviesState extends State<TopMovies> {
 
   @override
   void initState() {
     super.initState();
-    movieByGenreBloc..getMoviesByGenre(genreId);
+    moviesBloc..getMovies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<MovieResponse>(
-      stream: movieByGenreBloc.subject.stream,
-      builder: (context, AsyncSnapshot<MovieResponse> snapshot) {
-        if (snapshot.hasData) {
-          if (snapshot.data.error != null && snapshot.data.error.length > 0) {
-            return _buildErrorWidget(snapshot.data.error);
-          }
-          return _buildMoviesByGenre(snapshot.data);
-        } else if (snapshot.hasError) {
-          return _buildErrorWidget(snapshot.error);
-        } else {
-          return _buildLoadingWidget();
-        }
-      },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 10.0, top: 20.0),
+          child: Text(
+            "TOP RATED MOVIES",
+            style: TextStyle(
+                color: Style.Colors.titleColor,
+                fontWeight: FontWeight.w500,
+                fontSize: 12.0),
+          ),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        StreamBuilder<MovieResponse>(
+          stream: moviesBloc.subject.stream,
+          builder: (context, AsyncSnapshot<MovieResponse> snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data.error != null &&
+                  snapshot.data.error.length > 0) {
+                return _buildErrorWidget(snapshot.data.error);
+              }
+              return _buildMoviesWidget(snapshot.data);
+            } else if (snapshot.hasError) {
+              return _buildErrorWidget(snapshot.error);
+            } else {
+              return _buildLoadingWidget();
+            }
+          },
+        ),
+      ],
     );
   }
 
@@ -78,7 +88,7 @@ class _GenreMoviesState extends State<GenreMovies> {
     );
   }
 
-  Widget _buildMoviesByGenre(MovieResponse data) {
+  Widget _buildMoviesWidget(MovieResponse data) {
     List<Movie> movies = data.movies;
     
     if(movies.length == 0) {
@@ -107,7 +117,6 @@ class _GenreMoviesState extends State<GenreMovies> {
                       shape: BoxShape.rectangle,
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
                           EvaIcons.filmOutline , color: Colors.white , size: 50.0,
@@ -179,4 +188,5 @@ class _GenreMoviesState extends State<GenreMovies> {
       );
     }
   }
+
 }
