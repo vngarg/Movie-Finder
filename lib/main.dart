@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_finder/UI/HomeScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +12,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.dark
       ),
-      home: HomePage(),
     );
   }
 }
