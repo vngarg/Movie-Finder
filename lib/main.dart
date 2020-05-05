@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_finder/screens/homeScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,8 +11,8 @@ class MyApp extends StatelessWidget {
       title: 'Movie Finder',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.dark
       ),
+      home: HomeScreen(),
     );
   }
 }
