@@ -9,7 +9,7 @@ class MovieDetailResponse {
     this.movieDetail
   )  ;
 
-  MovieDetailResponse.formJson(Map<String , dynamic> json ):
+  MovieDetailResponse.fromJson(Map<String , dynamic> json ):
   movieDetail = MovieDetail.fromJson(json),
   error = "";
 

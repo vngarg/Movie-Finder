@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movie_finder/models/cast_response.dart';
 import 'package:movie_finder/models/genre_response.dart';
 import 'package:movie_finder/models/movie_detail_response.dart';
 import 'package:movie_finder/models/movie_response.dart';
@@ -85,9 +86,34 @@ class MovieRepository {
     try {
       Response response =
           await _dio.get(movieUrl + '/$id', queryParameters: params);
-      return MovieDetailResponse.formJson(response.data);
+      return MovieDetailResponse.fromJson(response.data);
     } catch (error, stackTrace) {
+      print("Exception Occured: $error stackTrace: $stackTrace");
       return MovieDetailResponse.withError('$error');
+    }
+  }
+
+  Future<CastResponse> getCasts(int id) async {
+    var params = {"api_key": apiKey, "language": "en-US"};
+    try {
+      Response response =
+          await _dio.get(movieUrl + '/$id' + '/credits', queryParameters: params);
+      return CastResponse.fromJson(response.data);
+    } catch (error, stackTrace) {
+      print("Exception Occured: $error stackTrace: $stackTrace");
+      return CastResponse.withError('$error');
+    }
+  }
+
+  Future<MovieResponse> getSimilarMovies(int id) async {
+    var params = {"api_key": apiKey, "language": "en-US"};
+    try {
+      Response response =
+          await _dio.get(movieUrl + '/$id' + '/similar', queryParameters: params);
+      return MovieResponse.fromJson(response.data);
+    } catch (error, stackTrace) {
+      print("Exception Occured: $error stackTrace: $stackTrace");
+      return MovieResponse.withError('$error');
     }
   }
 }
