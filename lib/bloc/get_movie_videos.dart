@@ -8,7 +8,7 @@ class MovieVideosBloc {
   final MovieRepository _repository = MovieRepository();
   final BehaviorSubject<VideoResponse> _subject = BehaviorSubject<VideoResponse>();
 
-  getCasts(int id) async {
+  getMovieVideos(int id) async {
     VideoResponse response = await _repository.getMovieVideos(id);
     _subject.sink.add(response);
   }
