@@ -4,9 +4,10 @@ import 'package:movie_finder/models/genre_response.dart';
 import 'package:movie_finder/models/movie_detail_response.dart';
 import 'package:movie_finder/models/movie_response.dart';
 import 'package:movie_finder/models/perosn_response.dart';
+import 'package:movie_finder/models/video_response.dart';
 
 class MovieRepository {
-  final String apiKey = "e6eaa08afd1f38b3181334a308d8b376";
+  final String apiKey = "";
   static String mainUrl = "https://api.themoviedb.org/3";
   final Dio _dio = Dio();
   var getPopularUrl = "$mainUrl/movie/top_rated";
@@ -114,6 +115,18 @@ class MovieRepository {
     } catch (error, stackTrace) {
       print("Exception Occured: $error stackTrace: $stackTrace");
       return MovieResponse.withError('$error');
+    }
+  }
+
+  Future<VideoResponse> getMovieVideos(int id) async {
+    var params = {"api_key": apiKey, "language": "en-US"};
+    try {
+      Response response =
+          await _dio.get(movieUrl + '/$id' + '/videos', queryParameters: params);
+      return VideoResponse.fromJson(response.data);
+    } catch (error, stackTrace) {
+      print("Exception Occured: $error stackTrace: $stackTrace");
+      return VideoResponse.withError('$error');
     }
   }
 }
