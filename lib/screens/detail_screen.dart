@@ -6,6 +6,7 @@ import 'package:movie_finder/models/movie.dart';
 import 'package:movie_finder/models/video.dart';
 import 'package:movie_finder/models/video_response.dart';
 import 'package:movie_finder/style/theme.dart' as Style;
+import 'package:movie_finder/widgets/casts.dart';
 import 'package:movie_finder/widgets/movie_info.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 
@@ -164,7 +165,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       SizedBox(
                         height: 10.0,
                       ),
-                      MovieInfo(id: movie.id,)
+                      MovieInfo(id: movie.id,),
+                      Casts(id: movie.id,)
                     ]),
                   ),
                 )
