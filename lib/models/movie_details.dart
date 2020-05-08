@@ -22,5 +22,5 @@ class MovieDetail {
   budget = json['budget'],
   genres = (json['genres'] as List).map((i) => Genre.fromJson(i)).toList(),
   releaseDate = json['release_date'],
-  runTime = json['runTime'];
+  runTime = json['runtime'];
 }

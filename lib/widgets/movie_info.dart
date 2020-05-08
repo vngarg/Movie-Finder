@@ -70,9 +70,10 @@ class _MovieInfoState extends State<MovieInfo> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("Error Occured $error" , style: TextStyle(
-            color: Colors.white
-          ),),
+          Text(
+            "Error Occured $error",
+            style: TextStyle(color: Colors.white),
+          ),
         ],
       ),
     );
@@ -80,66 +81,81 @@ class _MovieInfoState extends State<MovieInfo> {
 
   Widget _buildInfoWidget(MovieDetailResponse data) {
     MovieDetail details = data.movieDetail;
-    return Column (
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: 10.0 , right: 10.0),
+          padding: EdgeInsets.only(left: 10.0, right: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("BUDGET" , style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                    color: Style.Colors.titleColor
-                  ),),
+                  Text(
+                    "BUDGET",
+                    style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Style.Colors.titleColor),
+                  ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text(details.budget.toString() + '\$' , style: TextStyle(
-                    color: Style.Colors.secondColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                  ),)
+                  Text(
+                    details.budget.toString() + '\$',
+                    style: TextStyle(
+                      color: Style.Colors.secondColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0,
+                    ),
+                  )
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("DURATION" , style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                    color: Style.Colors.titleColor
-                  ),),
+                  Text(
+                    "DURATION",
+                    style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Style.Colors.titleColor),
+                  ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text(details.runTime.toString()+ 'min.' , style: TextStyle(
-                    color: Style.Colors.secondColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                  ),)
+                  Text(
+                    details.runTime.toString() + ' min.',
+                    style: TextStyle(
+                      color: Style.Colors.secondColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0,
+                    ),
+                  )
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("RELEASE DATE" , style: TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                    color: Style.Colors.titleColor
-                  ),),
+                  Text(
+                    "RELEASE DATE",
+                    style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Style.Colors.titleColor),
+                  ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text(details.releaseDate, style: TextStyle(
-                    color: Style.Colors.secondColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.0,
-                  ),)
+                  Text(
+                    details.releaseDate,
+                    style: TextStyle(
+                      color: Style.Colors.secondColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0,
+                    ),
+                  )
                 ],
               ),
             ],
@@ -147,6 +163,50 @@ class _MovieInfoState extends State<MovieInfo> {
         ),
         SizedBox(
           height: 10.0,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "GENRES" , style: TextStyle(
+                  color: Style.Colors.titleColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12.0
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                height: 30.0,
+                padding: EdgeInsets.only(top: 5.0),
+                child: ListView.builder(
+                  itemCount: details.genres.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Container(
+                        padding: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                            border: Border.all(color: Colors.white, width: 1.0)),
+                        child: Text(
+                          details.genres[index].name,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 9.0),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         )
       ],
     );
