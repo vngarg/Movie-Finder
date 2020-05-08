@@ -5,10 +5,13 @@ import 'package:movie_finder/bloc/get_movie_videos.dart';
 import 'package:movie_finder/models/movie.dart';
 import 'package:movie_finder/models/video.dart';
 import 'package:movie_finder/models/video_response.dart';
+import 'package:movie_finder/screens/video_player.dart';
 import 'package:movie_finder/style/theme.dart' as Style;
 import 'package:movie_finder/widgets/casts.dart';
 import 'package:movie_finder/widgets/movie_info.dart';
+import 'package:movie_finder/widgets/similar_movies.dart';
 import 'package:sliver_fab/sliver_fab.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
@@ -165,8 +168,15 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       SizedBox(
                         height: 10.0,
                       ),
-                      MovieInfo(id: movie.id,),
-                      Casts(id: movie.id,)
+                      MovieInfo(
+                        id: movie.id,
+                      ),
+                      Casts(
+                        id: movie.id,
+                      ),
+                      SimilarMovies(
+                        id: movie.id,
+                      )
                     ]),
                   ),
                 )
@@ -194,7 +204,19 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     List<Video> videos = data.videos;
 
     return FloatingActionButton(
-      onPressed: null,
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => VideoPlayerScreen(
+                      controller: YoutubePlayerController(
+                          initialVideoId: videos[0].key , 
+                          flags: YoutubePlayerFlags(
+                            autoPlay: true,
+                            forceHD: true
+                          )),
+                    )));
+      },
       backgroundColor: Style.Colors.secondColor,
       child: Icon(Icons.play_arrow),
     );
