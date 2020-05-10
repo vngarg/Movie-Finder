@@ -1,18 +1,15 @@
 ![flutter](https://img.shields.io/badge/Flutter-Framework-green?logo=flutter)
 ![Dart](https://img.shields.io/badge/Dart-Language-blue?logo=dart)
-![fork](https://img.shields.io/github/forks/vngarg/Movie-Finder) 
-![love](https://img.shields.io/badge/open%20%20source-%E2%9D%A4-red)
-![Size](https://img.shields.io/github/repo-size/vngarg/Prism?color=green)
-![issues](https://img.shields.io/github/issues/vngarg/Movie-Finder)
-![Release](https://img.shields.io/github/v/release/vngarg/Movie-Finder)
-![Stars](https://img.shields.io/github/stars/vngarg/Movie-Finder)
+![star](https://img.shields.io/github/stars/vngarg/Movie-Finder) 
+![issues](https://img.shields.io/github/issues/vngarg/Movie-Finder) 
+![fork](https://img.shields.io/github/forks/vngarg/Movie-Finder)
 
 # Movie-Finder
 1. For all the movie lovers who find very difficult to search for a movie to watch. No you can easily get all the latest and top movies, watch trailers and also see their cast and IMDB rating all at one place.
 2. Go to the end and download the APK for the Movie-Finder and enjoy the show.
 
 ## App Demo
-![App Demo](assets/recording/MovieFinderRecording.mp4)
+![App Demo](assets/recording/MovieFinderRecording.gif)
 
 ## Features
 
