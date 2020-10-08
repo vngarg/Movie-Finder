@@ -3,9 +3,12 @@
 ![star](https://img.shields.io/github/stars/vngarg/Movie-Finder) 
 ![issues](https://img.shields.io/github/issues/vngarg/Movie-Finder) 
 ![fork](https://img.shields.io/github/forks/vngarg/Movie-Finder)
+![dev](https://img.shields.io/badge/Developed%20by%20-Shlok%20Garg-orange)
+![love](https://img.shields.io/badge/open%20%20source-%E2%9D%A4-red)
+
 
 # Movie-Finder
-1. For all the movie lovers who find very difficult to search for a movie to watch. No you can easily get all the latest and top movies, watch trailers and also see their cast and IMDB rating all at one place.
+1. For all the movie lovers who find very difficult to search for a movie to watch. No you can easily get all the Latest and Top Movies, watch trailers and also see their cast and IMDB rating all at one place.
 2. Go to the end and download the APK for the Movie-Finder and enjoy the show.
 
 ## App Demo
